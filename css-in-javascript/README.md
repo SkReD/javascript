@@ -153,46 +153,11 @@
 
 ## Ordering
 
-  - Define styles after the component.
+  - Define styles in separate `[componentName].rule.js` file.
 
-    > Why? We use a higher-order component to theme our styles, which is naturally used after the component definition. Passing the styles object directly to this function reduces indirection.
+    > Why? Clearer component logic code.
 
-    ```jsx
-    // bad
-    const styles = {
-      container: {
-        display: 'inline-block',
-      },
-    };
-
-    function MyComponent({ styles }) {
-      return (
-        <div {...css(styles.container)}>
-          Never doubt that a small group of thoughtful, committed citizens can
-          change the world. Indeed, it’s the only thing that ever has.
-        </div>
-      );
-    }
-
-    export default withStyles(() => styles)(MyComponent);
-
-    // good
-    function MyComponent({ styles }) {
-      return (
-        <div {...css(styles.container)}>
-          Never doubt that a small group of thoughtful, committed citizens can
-          change the world. Indeed, it’s the only thing that ever has.
-        </div>
-      );
-    }
-
-    export default withStyles(() => ({
-      container: {
-        display: 'inline-block',
-      },
-    }))(MyComponent);
-    ```
-
+   
 ## Nesting
 
   - Leave a blank line between adjacent blocks at the same indentation level.
